@@ -9,6 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,6 +22,7 @@ import lombok.NoArgsConstructor;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
 import org.joda.time.DateTime;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import pl.java.scalatech.entity.annotation.PasswordsEqualConstraint;
 import pl.java.scalatech.entity.common.Builder;
@@ -33,6 +35,7 @@ import pl.java.scalatech.entity.type.Sex;
  *         Creating time : 21 lut 2014 16:17:33
  */
 @Entity
+@Table(name = "base_users")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -64,6 +67,7 @@ public abstract class BaseUser extends EntityCommonVersioning {
     private String mail;
 
     @Column(name = "birth_date")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
     private DateTime birthDate;
 
     @NotNull
@@ -154,32 +158,32 @@ public abstract class BaseUser extends EntityCommonVersioning {
             this.password = password;
         }
 
-        public UserBuilder<T> birthDate(@SuppressWarnings("hiding") DateTime birthDate) {
+		public UserBuilder<T> birthDate(DateTime birthDate) {
             this.birthDate = birthDate;
             return this;
         }
 
-        public UserBuilder<T> phone(@SuppressWarnings("hiding") String phone) {
+		public UserBuilder<T> phone(String phone) {
             this.phone = phone;
             return this;
         }
 
-        public UserBuilder<T> address(@SuppressWarnings("hiding") Address address) {
+		public UserBuilder<T> address(Address address) {
             this.address = address;
             return this;
         }
 
-        public UserBuilder<T> mail(@SuppressWarnings("hiding") String mail) {
+		public UserBuilder<T> mail(String mail) {
             this.mail = mail;
             return this;
         }
 
-        public UserBuilder<T> sex(@SuppressWarnings("hiding") Sex sex) {
+		public UserBuilder<T> sex(Sex sex) {
             this.sex = sex;
             return this;
         }
 
-        public UserBuilder<T> ip(@SuppressWarnings("hiding") String ip) {
+		public UserBuilder<T> ip(String ip) {
             this.ip = ip;
             return this;
         }

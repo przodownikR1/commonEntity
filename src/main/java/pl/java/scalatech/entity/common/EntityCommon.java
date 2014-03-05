@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import org.joda.time.DateTime;
-
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author Sławomir Borowiec 
@@ -33,6 +33,7 @@ public abstract class EntityCommon extends EnityToken {
 
     @Column(name = "date_modification")
     @Basic(fetch = FetchType.LAZY)
+	@DateTimeFormat(pattern = "MM-dd-yyyy HH:mm:ss")
     protected DateTime dateModification;
 
     
@@ -42,6 +43,7 @@ public abstract class EntityCommon extends EnityToken {
     
     @Column(name = "DATE_ADDED", nullable = false)
     @Basic(fetch = FetchType.LAZY)
+	@DateTimeFormat(pattern = "MM-dd-yyyy HH:mm:ss")
     protected DateTime dateAdded = new DateTime();
 
     @PreUpdate

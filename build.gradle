@@ -69,7 +69,7 @@ dependencies {
     compile ("org.hibernate:hibernate-validator:${hibernateValidatorVersion}")
     compile ("org.hibernate:hibernate-core:${hibernateVersion}")
     compile ("org.hibernate:hibernate-entitymanager:${hibernateVersion}")
-    
+	compile ("org.springframework:spring-context:${springVersion}")
     compile ("joda-time:joda-time:${jodaTimeVersion}")
     compile ("org.joda:joda-money:${jodaMoneyVersion}")
    
