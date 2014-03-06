@@ -23,6 +23,12 @@ repositories {
     maven { url "http://repo.spring.io/libs-release-local/"}
     maven { url "http://repo.spring.io/libs-milestone" }
 }
+groupId = "pl.java.scalatech"
+ext {
+    groupId = "pl.java.scalatech"
+    artefactId = "basicEtity"
+    version = "0.0.1"
+}
 
 sourceSets {
     intTest
@@ -100,7 +106,9 @@ configurations {
 
 jar {
     baseName = 'entity_basic'
-    version =  '0.0.1'
+    groupId = 'pl.java.scalatech'
+    artefactId = 'basicEtity'
+    version = '0.0.1'
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
     manifest {
