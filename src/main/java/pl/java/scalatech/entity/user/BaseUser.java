@@ -1,5 +1,7 @@
 package pl.java.scalatech.entity.user;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -67,7 +69,7 @@ public abstract class BaseUser extends EntityCommonVersioning {
     private String mail;
 
     @Column(name = "birth_date")
-	@DateTimeFormat(pattern = "MM-dd-yyyy")
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
     private DateTime birthDate;
 
     @NotNull
@@ -127,11 +129,11 @@ public abstract class BaseUser extends EntityCommonVersioning {
 
     public BaseUser(UserBuilder<?> userBuilder) {
         this.firstName = userBuilder.firstName;
-        this.lastName = userBuilder.lastName;
+        this.lastName = checkNotNull(userBuilder.lastName, "lastName can't be null");
         this.address = userBuilder.address;
-        this.login = userBuilder.login;
-        this.password = userBuilder.password;
-        this.mail = userBuilder.mail;
+        this.login = checkNotNull(userBuilder.login, "login can't be null");
+        this.password = checkNotNull(userBuilder.password, "password can't be null");
+        this.mail = checkNotNull(userBuilder.mail, "password can't be null");
         this.ip = userBuilder.ip;
         this.sex = userBuilder.sex;
         this.phone = userBuilder.phone;
@@ -158,36 +160,35 @@ public abstract class BaseUser extends EntityCommonVersioning {
             this.password = password;
         }
 
-		public UserBuilder<T> birthDate(DateTime birthDate) {
+        public UserBuilder<T> birthDate(DateTime birthDate) {
             this.birthDate = birthDate;
             return this;
         }
 
-		public UserBuilder<T> phone(String phone) {
+        public UserBuilder<T> phone(String phone) {
             this.phone = phone;
             return this;
         }
 
-		public UserBuilder<T> address(Address address) {
+        public UserBuilder<T> address(Address address) {
             this.address = address;
             return this;
         }
 
-		public UserBuilder<T> mail(String mail) {
+        public UserBuilder<T> mail(String mail) {
             this.mail = mail;
             return this;
         }
 
-		public UserBuilder<T> sex(Sex sex) {
+        public UserBuilder<T> sex(Sex sex) {
             this.sex = sex;
             return this;
         }
 
-		public UserBuilder<T> ip(String ip) {
+        public UserBuilder<T> ip(String ip) {
             this.ip = ip;
             return this;
         }
-
 
     }
 
