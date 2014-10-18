@@ -1,0 +1,20 @@
+task sourcesJar(type :Jar){
+    baseName = archivesBaseName
+    classifier 'source'
+    from sourceSets.main.allSource
+}
+
+artifacts{ archives sourcesJar }
+
+assemble.dependsOn sourcesJar
+
+apply plugin: 'distribution'
+
+distributions {
+    main {
+        baseName = archivesBaseName
+
+        contents { from { libsDir } }
+    }
+}
+

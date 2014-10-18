@@ -39,7 +39,7 @@ public class ConcreteUser extends BaseUser {
         private static final long serialVersionUID = 3095189519520925314L;
         private Money salary;
 
-        public ConcreteUserBuilder salary(@SuppressWarnings("hiding") Money salary) {
+        public ConcreteUserBuilder salary(Money salary) {
             this.salary = salary;
             return this;
         }
