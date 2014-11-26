@@ -1,5 +1,8 @@
 package pl.java.scalatech.entity.common;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
@@ -13,42 +16,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  21 lut 2014 13:43:20
- 
- */
 @MappedSuperclass
 @Cacheable
 @Data
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public abstract class EntityCommon extends EnityToken {
-
-    private static final long serialVersionUID = -7901407735478652066L;
+public abstract class EntityCommon<T extends Serializable> extends PKEntity<T> {
 
     @Column(name = "date_modification")
     @Basic(fetch = FetchType.LAZY)
-	@DateTimeFormat(pattern = "MM-dd-yyyy HH:mm:ss")
-    protected DateTime dateModification;
+    @DateTimeFormat(pattern = "MM-dd-yyyy HH:mm:ss")
+    protected Date dateModification;
 
-    
     @Setter
     @Getter
     protected Boolean disabled = Boolean.FALSE;
-    
+
     @Column(name = "DATE_ADDED", nullable = false)
     @Basic(fetch = FetchType.LAZY)
-	@DateTimeFormat(pattern = "MM-dd-yyyy HH:mm:ss")
-    protected DateTime dateAdded = new DateTime();
+    @DateTimeFormat(pattern = "MM-dd-yyyy HH:mm:ss")
+    protected Date dateAdded = new Date();
 
     @PreUpdate
     private void initPreUpdate() {
-        dateModification = new DateTime();
+        dateModification = new Date();
         if (dateAdded == null) {
             dateAdded = dateModification;
         }

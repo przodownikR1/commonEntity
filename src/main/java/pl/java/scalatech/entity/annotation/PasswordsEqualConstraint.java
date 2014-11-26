@@ -12,12 +12,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import pl.java.scalatech.entity.constraint.PasswordsEqualConstraintValidator;
 
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  21 lut 2014 16:19:47
- 
- */
+
 @Target({ ElementType.FIELD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

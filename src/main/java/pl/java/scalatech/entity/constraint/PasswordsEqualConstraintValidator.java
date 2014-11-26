@@ -7,12 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 import pl.java.scalatech.entity.annotation.PasswordsEqualConstraint;
 import pl.java.scalatech.entity.user.BaseUser;
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  21 lut 2014 16:19:13
- 
- */
+
 public class PasswordsEqualConstraintValidator implements ConstraintValidator<PasswordsEqualConstraint, BaseUser> {
 
     @Override
