@@ -1,0 +1,3 @@
+apply plugin: 'project-report'
+apply plugin: 'build-dashboard'
+apply plugin: 'codenarc'
