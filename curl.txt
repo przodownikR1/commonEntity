@@ -1,0 +1,42 @@
+curl http://localhost:8487/nexus/content/groups/public/ --user userId
+
+curl http://localhost:8487/nexus/content/repositories/snapshots --user admin --password admin123
+
+curl -X GET -u admin:admin123 http://localhost:8487/nexus/content/repositories/snapshots
+
+
+curl http://localhost:8487/nexus/service/local/status 
+
+curl http://localhost:8487/nexus/service/local/repositories
+
+curl -X GET -u admin:admin123 http://localhost:8487/nexus/service/local/users
+
+
+Create user
+
+POST /users
+
+None
+None
+
+$ curl -X POST -H "Content-Type: application/json" https://nexus.api.globusonline.org/users -d '{
+        "username": "username", 
+        "accept_terms": true, 
+        "opt_in": true, 
+        "fullname": "Dummy Users", 
+        "password": "ChangeMe", 
+        "email": "no-reply@globusonline.org"
+    }'
+
+Unsuccessfully create user with duplicate username
+
+$ curl -X POST -H "Content-Type: application/json" https://nexus.api.globusonline.org/users -d '{
+        "username": "username", 
+        "accept_terms": true, 
+        "opt_in": true, 
+        "fullname": "Dummy Users", 
+        "password": "ChangeMe", 
+        "email": "no-reply@globusonline.org"
+    }'
+
+

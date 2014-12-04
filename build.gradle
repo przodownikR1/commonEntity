@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply from: "scriptGradle/depencencies.gradle"
 apply from: "scriptGradle/report.gradle"
@@ -43,15 +42,6 @@ jar {
 
 
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "http://localhost:8487/nexus/content/groups/public/"){
-                authentication ( userName: '${nexusLogin}', password: '${nexusPassword}' )
-            }
-        }
-    }
-}
 
 
 
