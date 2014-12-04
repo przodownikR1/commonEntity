@@ -1,4 +1,11 @@
 apply from: './properties.gradle'
+
+repositories {
+    maven { url "http://localhost:8487/nexus/content/groups/public/" }
+    maven { url "http://repo.spring.io/libs-milestone" }
+    mavenLocal()
+}
+
 dependencies {
     compile ("org.codehaus.groovy:groovy:${groovyVersion}")
     compile ("javax.validation:validation-api:${javaxValidationVersion}")

@@ -1,7 +1,7 @@
 apply plugin: 'distribution'
 distributions {
     main {
-        baseName = archivesBaseName
+        baseName = distZip
 
         contents { from { libsDir } }
     }

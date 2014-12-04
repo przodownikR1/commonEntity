@@ -1,36 +1,29 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
-
+apply from: "scriptGradle/depencencies.gradle"
 apply from: "scriptGradle/report.gradle"
 apply from: "scriptGradle/groovy.gradle"
-apply from: "scriptGradle/depencencies.gradle"
 apply from: "scriptGradle/assembler.gradle"
 apply from: "scriptGradle/distribution.gradle"
 apply from: "scriptGradle/release.gradle"
+apply from: "scriptGradle/sonar.gradle"
 
 libsDirName = './target'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-archivesBaseName = 'basicEntity'
-
-repositories {
-    maven { url "http://localhost:8487/nexus/content/groups/public/" }
-}
 
 sourceSets {
     logger.quiet('sourceSets ......................')
     intTest
     main {
         java { srcDir 'src/main/java' }
-      //  groovy { srcDir 'src/main/groovy' }
         resources { srcDir 'src/main/resources' }
     }
     test {
         java { srcDir 'src/test/java' }
-        //groovy { srcDir 'src/test/groovy' }
         resources { srcDir 'src/test/resources' }
     }
 }
@@ -59,6 +52,8 @@ uploadArchives {
         }
     }
 }
+
+
 
 project.tasks.test.configure { includes = ['**/*Test.class']}
 

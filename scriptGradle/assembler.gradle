@@ -18,15 +18,5 @@ artifacts {
      }
 
 assemble.dependsOn sourcesJar
-assemble.dependsOn javadocJar
-
-apply plugin: 'distribution'
-
-distributions {
-    main {
-        baseName = archivesBaseName
-
-        contents { from { libsDir } }
-    }
-}
+//assemble.dependsOn javadocJar
 
