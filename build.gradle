@@ -1,9 +1,9 @@
-apply plugin: "groovy"
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 
 apply from: "scriptGradle/report.gradle"
+apply from: "scriptGradle/groovy.gradle"
 apply from: "scriptGradle/depencencies.gradle"
 apply from: "scriptGradle/assembler.gradle"
 apply from: "scriptGradle/distribution.gradle"
@@ -21,22 +21,22 @@ repositories {
 }
 
 sourceSets {
+    logger.quiet('sourceSets ......................')
     intTest
     main {
         java { srcDir 'src/main/java' }
-        groovy { srcDir 'src/main/groovy' }
+      //  groovy { srcDir 'src/main/groovy' }
         resources { srcDir 'src/main/resources' }
     }
     test {
         java { srcDir 'src/test/java' }
-        groovy { srcDir 'src/test/groovy' }
+        //groovy { srcDir 'src/test/groovy' }
         resources { srcDir 'src/test/resources' }
     }
 }
 
-
-
 jar {
+    logger.quiet('jar ......................')
     baseName=projectName
     manifest {
         attributes 'Implementation-Title': 'Basic Entity',
