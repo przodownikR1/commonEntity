@@ -7,19 +7,19 @@ apply plugin: "sonar-runner"
 
 sonarRunner {
     sonarProperties {
-       property "sonar.projectKey", "basicEntity"
-       property "sonar.projectName", "Basic entity "
+       property "sonar.projectKey", "${projectName}"
+       property "sonar.projectName", "${projectName}"
 
         property "sonar.junit.reportsPath", testResultsDir
-
+        logger.quiet("${sonarJdbcUrl}    ${sonarJdbcDriverClassName}  ${sonarJdbcUsername}  ${sonarJdbcPassword} ")
         // Address of SonarQube server
-        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.host.url", "${sonarURL}"
 
         // SonarQube stores the test results in this database
-        property "sonar.jdbc.url", "jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true"
-        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
-        property "sonar.jdbc.username", "sonar"
-        property "sonar.jdbc.password", "sonar"
+        property "sonar.jdbc.url", "${sonarJdbcUrl}"
+        property "sonar.jdbc.driverClassName", "${sonarJdbcDriverClassName}"
+        property "sonar.jdbc.username", "${sonarJdbcUsername}"
+        property "sonar.jdbc.password", "${sonarJdbcPassword}"
     }
 }
 

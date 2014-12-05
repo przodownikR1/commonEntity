@@ -1,16 +1,19 @@
 apply plugin: 'maven-publish'
 ext {
-    nexusBaseUrl = '${nexusRUL}'
-    nexusSnapshotRepoUrl = "$nexusBaseUrl/snapshots"
-    nexusReleaseRepoUrl = "$nexusBaseUrl/releases"
+    group = '${group}'
+    version = '${version}'
+    nexusBaseUrl = '${nexusURL}'
+    nexusSnapshotRepoUrl = "${nexusURL}/snapshots"
+    nexusReleaseRepoUrl = "${nexusURL}/releases"
+    logger.quiet("      ---      ${nexusURL}  ${nexusSnapshotRepoUrl}  ${nexusReleaseRepoUrl} ")
 }
 
 publishing {
     publications {
         plugin(MavenPublication) {
-            groupId 'pl.java.scalatech'
+            /*groupId 'pl.java.scalatech'
             artifactId 'basicEntity'
-            version '1.0.2'
+            version '${version}'*/
             from components.java
             pom.withXml {
                 def root = asNode()
@@ -43,17 +46,20 @@ publishing {
     }
 
     repositories {
-        maven {
+     /*   maven {
             name 'myLocal'
             url "file://${System.env.HOME}/repos/"
             logger.quiet "${url} "
             logger.quiet "${System.env.HOME}"
-        }
+        }*/
      
         maven {
             name 'remoteRepository'
             url project.version.endsWith('-SNAPSHOT') ? nexusSnapshotRepoUrl : nexusReleaseRepoUrl
-            logger.quiet " nexusLogin  :  ${nexusLogin}   -- >    nexusPassword  :  ${nexusPassword}  ,   ${url} "
+            
+           
+            logger.quiet " snapshotURL :  ${nexusSnapshotRepoUrl}  < - >  releaseURL :  ${nexusReleaseRepoUrl} ,  url : ${url}"
+            logger.quiet " nexusLogin  :  ${nexusLogin}   -- >    nexusPassword  :  ${nexusPassword} "  
             credentials { 
                 username = '${nexusLogin}'
                 password = '${nexusPassword}'
