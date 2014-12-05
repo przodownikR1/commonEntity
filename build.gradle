@@ -15,7 +15,6 @@ targetCompatibility = 1.8
 
 
 sourceSets {
-    logger.quiet('sourceSets ......................')
     intTest
     main {
         java { srcDir 'src/main/java' }
@@ -28,7 +27,6 @@ sourceSets {
 }
 
 jar {
-    logger.quiet('jar ......................')
     baseName=projectName
     manifest {
         attributes 'Implementation-Title': 'Basic Entity',
