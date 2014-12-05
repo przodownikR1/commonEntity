@@ -1,6 +1,6 @@
 apply plugin: 'maven-publish'
 ext {
-    nexusBaseUrl = 'http://localhost:8487/nexus/content/repositories'
+    nexusBaseUrl = '${nexusRUL}'
     nexusSnapshotRepoUrl = "$nexusBaseUrl/snapshots"
     nexusReleaseRepoUrl = "$nexusBaseUrl/releases"
 }
@@ -37,39 +37,40 @@ publishing {
                 license.appendNode( 'url', 'http://www.apache.org/licenses/LICENSE-2.0.txt' )
                 license.appendNode( 'distribution', 'repo' )
             }
-            
-
+          
             artifact sourcesJar
         }
     }
 
     repositories {
-     /*   maven {
+        maven {
             name 'myLocal'
-            url "file://$projectDir/repo"
+            url "file://${System.env.HOME}/repos/"
+            logger.quiet "${url} "
+            logger.quiet "${System.env.HOME}"
         }
-*/
+     
         maven {
             name 'remoteRepository'
             url project.version.endsWith('-SNAPSHOT') ? nexusSnapshotRepoUrl : nexusReleaseRepoUrl
-            
-            credentials {
-                 logger.quiet " nexusLogin  :  ${nexusLogin}   -- >    nexusPassword  :  ${nexusPassword} " 
+            logger.quiet " nexusLogin  :  ${nexusLogin}   -- >    nexusPassword  :  ${nexusPassword}  ,   ${url} "
+            credentials { 
                 username = '${nexusLogin}'
                 password = '${nexusPassword}'
             }
         }
     }
     
-    uploadArchives {
+/*    uploadArchives {
         repositories {
             mavenDeployer {
-                repository(url: "http://localhost:8487/nexus/content/groups/public/"){
-                    logger.quiet " nexusLogin  :  ${nexusLogin}   -- >    nexusPassword  :  ${nexusPassword} "
+                   //http://192.168.1.250:8487/nexus/content/repositories
+                    repository(url: "http://192.168.1.250:8487/nexus/content/repositories/releases"){
+                    logger.quiet " nexusLogin  :  ${nexusLogin}   -- >    nexusPassword  :  ${nexusPassword}  "
                     authentication ( userName: '${nexusLogin}', password: '${nexusPassword}' )
                 }
             }
         }
-    }
+    }*/
     
 }

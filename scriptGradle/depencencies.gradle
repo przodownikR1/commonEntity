@@ -1,4 +1,4 @@
-apply from: './properties.gradle'
+apply from: './dependencies.properties'
 
 repositories {
     maven { url "http://localhost:8487/nexus/content/groups/public/" }
