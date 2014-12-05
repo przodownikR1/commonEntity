@@ -6,8 +6,8 @@ ext {
     nexusSnapshotRepoUrl = "${nexusURL}/snapshots"
     nexusReleaseRepoUrl = "${nexusURL}/releases"
     logger.quiet("      ---      ${nexusURL}  ${nexusSnapshotRepoUrl}  ${nexusReleaseRepoUrl} ")
-}
 
+}
 publishing {
     publications {
         plugin(MavenPublication) {
@@ -40,7 +40,6 @@ publishing {
                 license.appendNode( 'url', 'http://www.apache.org/licenses/LICENSE-2.0.txt' )
                 license.appendNode( 'distribution', 'repo' )
             }
-          
             artifact sourcesJar
         }
     }
@@ -56,12 +55,9 @@ publishing {
         maven {
             name 'remoteRepository'
             url project.version.endsWith('-SNAPSHOT') ? nexusSnapshotRepoUrl : nexusReleaseRepoUrl
-            
-           
-            logger.quiet " snapshotURL :  ${nexusSnapshotRepoUrl}  < - >  releaseURL :  ${nexusReleaseRepoUrl} ,  url : ${url}"
-            logger.quiet " nexusLogin  :  ${nexusLogin}   -- >    nexusPassword  :  ${nexusPassword} "  
+            logger.quiet "  url : ${url}  ,  group : ${group}   ,  version : ${version}"  
             credentials { 
-                username = '${nexusLogin}'
+                username = '${nexusUsername}'
                 password = '${nexusPassword}'
             }
         }
