@@ -13,9 +13,11 @@ dependencies {
     compile ("org.hibernate:hibernate-core:${hibernateVersion}")
     compile ("org.hibernate:hibernate-entitymanager:${hibernateVersion}")
     compile ("org.springframework:spring-context:${springVersion}")
-    compile ("joda-time:joda-time:${jodaTimeVersion}")
+    
+    compile ("org.springframework.security:spring-security-config:${springSecurityVersion}")
+    
     compile ("org.joda:joda-money:${jodaMoneyVersion}")
-
+    compile("org.jadira.usertype:usertype.extended:${jadiraUsertypeVersion}")
     compile("org.codehaus.jackson:jackson-mapper-asl:${jacksonMapperVersion}")
     compile("org.codehaus.jackson:jackson-core-asl:${jacksonMapperVersion}")
     //compiler("joda-time:joda-time-hibernate:${jodaTimeHibernateVersion}")

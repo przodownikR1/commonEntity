@@ -8,11 +8,7 @@ import org.junit.Test;
 import pl.java.scalatech.entity.common.Location;
 import pl.java.scalatech.entity.user.Address;
 
-/**
- * @author Sławomir Borowiec
- *         Module name : basicEntity
- *         Creating time : 24 lut 2014 11:43:55
- */
+
 public class AddressBuilderTest {
 
     private static final String CITY = "WARSZAWA";

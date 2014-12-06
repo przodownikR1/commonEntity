@@ -1,57 +1,55 @@
 package pl.java.scalatech.entity.common;
 
+import java.time.LocalDate;
+
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PreUpdate;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import org.joda.time.DateTime;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.annotations.Type;
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  21 lut 2014 13:43:20
- 
- */
+
 @MappedSuperclass
 @Cacheable
 @Data
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public abstract class EntityCommon extends EnityToken {
+public abstract class EntityCommon<T> extends EnityToken<T> {
 
     private static final long serialVersionUID = -7901407735478652066L;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_modification")
     @Basic(fetch = FetchType.LAZY)
-	@DateTimeFormat(pattern = "MM-dd-yyyy HH:mm:ss")
-    protected DateTime dateModification;
+    @XmlTransient
+    @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentLocalDate")
+    protected LocalDate dateModification;
 
-    
-    @Setter
-    @Getter
-    protected Boolean disabled = Boolean.FALSE;
-    
-    @Column(name = "DATE_ADDED", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date_added", nullable = false)
     @Basic(fetch = FetchType.LAZY)
-	@DateTimeFormat(pattern = "MM-dd-yyyy HH:mm:ss")
-    protected DateTime dateAdded = new DateTime();
+    @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentLocalDate")
+    @XmlTransient
+    protected LocalDate dateAdded = LocalDate.now();
 
     @PreUpdate
     private void initPreUpdate() {
-        dateModification = new DateTime();
+        dateModification = LocalDate.now();
         if (dateAdded == null) {
             dateAdded = dateModification;
         }
     }
+
+    protected Boolean disabled = Boolean.FALSE;
 
 }

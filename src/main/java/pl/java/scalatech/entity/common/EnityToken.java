@@ -10,14 +10,9 @@ import lombok.Setter;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  21 lut 2014 13:43:38
- 
- */
+
 @MappedSuperclass
-public abstract class EnityToken extends PKEntity {
+public abstract class EnityToken<T> extends PKEntity<T> {
     
     private static final long serialVersionUID = -7038220129873367795L;
 

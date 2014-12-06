@@ -1,19 +1,12 @@
-
 package pl.java.scalatech.entity.constraint;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import pl.java.scalatech.entity.annotation.PasswordsEqualConstraint;
-import pl.java.scalatech.entity.user.BaseUser;
+import pl.java.scalatech.entity.user.SecureUser;
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  21 lut 2014 16:19:13
- 
- */
-public class PasswordsEqualConstraintValidator implements ConstraintValidator<PasswordsEqualConstraint, BaseUser> {
+public class PasswordsEqualConstraintValidator implements ConstraintValidator<PasswordsEqualConstraint, SecureUser> {
 
     @Override
     public void initialize(PasswordsEqualConstraint constraintAnnotation) {
@@ -21,10 +14,8 @@ public class PasswordsEqualConstraintValidator implements ConstraintValidator<Pa
     }
 
     @Override
-    public boolean isValid(BaseUser user, ConstraintValidatorContext context) {
-        if (!user.getPassword().equals(user.getConfirmPassword())) {
-            return false;
-        }
+    public boolean isValid(SecureUser user, ConstraintValidatorContext context) {
+        if (!user.getPassword().equals(user.getConfirmPassword())) { return false; }
         return true;
     }
 

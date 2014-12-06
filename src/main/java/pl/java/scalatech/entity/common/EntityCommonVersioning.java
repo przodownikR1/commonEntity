@@ -10,14 +10,9 @@ import lombok.Setter;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  21 lut 2014 13:43:10
- 
- */
+
 @MappedSuperclass
-public class EntityCommonVersioning extends EntityCommon {
+public class EntityCommonVersioning<T> extends EntityCommon<T> {
     private static final long serialVersionUID = -4054868885539004220L;
 
     @Version
