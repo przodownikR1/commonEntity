@@ -52,11 +52,11 @@ publishing {
      
         maven {
             name 'remoteRepository'
-            logger.quiet " +++      ${project.version}"
+            logger.info " +++      ${project.version}"
             url project.version.endsWith('-SNAPSHOT') ? nexusSnapshotRepoUrl : nexusReleaseRepoUrl
            
-            logger.quiet "  url : ${url}  ,  group : ${group}   ,  version : ${version}"  
-            logger.quiet " ${nexusUsername}   ,  ${nexusPassword}"
+            logger.info "  url : ${url}  ,  group : ${group}   ,  version : ${version}"  
+            logger.debug " ${nexusUsername}   ,  ${nexusPassword}"
             credentials { 
                 username = "${nexusUsername}"
                 password = "${nexusPassword}"
