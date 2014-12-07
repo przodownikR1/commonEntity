@@ -60,7 +60,7 @@ public class SecureUser extends BaseUser implements UserDetails {
     @Column(name = "password", length = 255)
     private String enc_password;
 
-    @NotNull
+ 
     @Column(name = "attempt_login_count", nullable = false, precision = 4)
     private int attemptLoginCount = 0;
 

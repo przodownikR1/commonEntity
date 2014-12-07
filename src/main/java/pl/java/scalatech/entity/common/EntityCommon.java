@@ -1,5 +1,6 @@
 package pl.java.scalatech.entity.common;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
@@ -24,7 +25,7 @@ import org.hibernate.annotations.Type;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public abstract class EntityCommon<T> extends EnityToken<T> {
+public abstract class EntityCommon<T extends Serializable> extends EnityToken<T> {
 
     private static final long serialVersionUID = -7901407735478652066L;
 

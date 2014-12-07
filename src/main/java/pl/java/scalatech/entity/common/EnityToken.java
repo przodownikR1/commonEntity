@@ -1,6 +1,8 @@
 
 package pl.java.scalatech.entity.common;
 
+import java.io.Serializable;
+
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
@@ -12,7 +14,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 @MappedSuperclass
-public abstract class EnityToken<T> extends PKEntity<T> {
+public abstract class EnityToken<T extends Serializable> extends PKEntity<T> {
     
     private static final long serialVersionUID = -7038220129873367795L;
 
