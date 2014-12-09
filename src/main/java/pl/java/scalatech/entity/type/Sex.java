@@ -1,11 +1,15 @@
 package pl.java.scalatech.entity.type;
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  21 lut 2014 16:22:51
- 
- */
+import lombok.Getter;
+
 public enum Sex {
-  Male,Female
+    MALE("male.message"), FEMALE("female.message");
+
+    private Sex(String name) {
+        this.name = name;
+    }
+
+    @Getter
+    private String name;
+
 }

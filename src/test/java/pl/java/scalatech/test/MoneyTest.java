@@ -13,12 +13,7 @@ import org.joda.money.Money;
 import org.junit.Ignore;
 import org.junit.Test;
 
-/**
- * @author Sławomir Borowiec 
- * Module name : basicEntity
- * Creating time :  27 lut 2014 16:44:08
- 
- */
+
 @Ignore
 public class MoneyTest {
     
