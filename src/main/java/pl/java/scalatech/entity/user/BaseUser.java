@@ -1,5 +1,6 @@
 package pl.java.scalatech.entity.user;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -34,7 +35,7 @@ import pl.java.scalatech.entity.type.Sex;
 @EqualsAndHashCode(callSuper = true)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING)
-public abstract class BaseUser extends EntityCommonVersioning<Long> {
+public abstract class BaseUser<T extends Serializable> extends EntityCommonVersioning<T> {
     private static final long serialVersionUID = 3167444754591334354L;
 
     @NotNull

@@ -50,7 +50,7 @@ public abstract class EntityCommon<T extends Serializable> extends EnityToken<T>
             dateAdded = dateModification;
         }
     }
-
-    protected Boolean disabled = Boolean.FALSE;
+    @Column(name = "date_modification",nullable=false)
+    protected boolean disabled = Boolean.FALSE.booleanValue();
 
 }
