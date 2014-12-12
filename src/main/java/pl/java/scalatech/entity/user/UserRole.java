@@ -35,5 +35,6 @@ public class UserRole extends EntityCommon<Long> {
     @Size(min = 2, max = 50)
     @Column(name = "desc_role")
     private String desc;
-
+    
+ 
 }
