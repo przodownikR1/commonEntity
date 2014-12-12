@@ -21,8 +21,8 @@ import pl.java.scalatech.entity.common.Location;
 @XmlRootElement(name = "address")
 @Data
 @AllArgsConstructor
-@Builder
 @NoArgsConstructor
+@Builder
 public class Address implements Serializable {
     private static final long serialVersionUID = -5271571702826932282L;
     @NotNull
@@ -53,5 +53,5 @@ public class Address implements Serializable {
     @Pattern(regexp = "^\\d{2}-\\d{3}$")
     private String zipcode;
 
-  
+
 }

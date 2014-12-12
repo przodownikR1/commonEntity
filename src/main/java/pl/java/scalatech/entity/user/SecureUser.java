@@ -10,14 +10,16 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Builder;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Type;
@@ -32,14 +34,14 @@ import pl.java.scalatech.entity.annotation.PasswordsEqualConstraint;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @DiscriminatorColumn(name = "User", discriminatorType = DiscriminatorType.STRING)
-public class SecureUser extends BaseUser implements UserDetails {
+@Builder
+public class SecureUser extends BaseUser<Long> implements UserDetails {
     private static final long serialVersionUID = -6567709458397827407L;
 
     private String thumbnailUrl;
-
-    private String email;
-    private String activatedCode;
-    private boolean activated;
+    
+    @OneToOne
+    private Activation<Long> activation; 
 
     @Column(name = "logged", nullable = false)
     private boolean logged;
@@ -56,11 +58,7 @@ public class SecureUser extends BaseUser implements UserDetails {
     @XmlTransient
     @JsonIgnore
     private String password;
-
-    @Column(name = "password", length = 255)
-    private String enc_password;
-
-    @NotNull
+    
     @Column(name = "attempt_login_count", nullable = false, precision = 4)
     private int attemptLoginCount = 0;
 
@@ -109,7 +107,7 @@ public class SecureUser extends BaseUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        if (!this.disabled && this.activated) { return true; }
+        if (!this.disabled) { return true; }
         return false;
     }
 

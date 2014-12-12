@@ -18,6 +18,7 @@ dependencies {
     compile("org.jadira.usertype:usertype.extended:${jadiraUsertypeVersion}")
     compile("org.codehaus.jackson:jackson-mapper-asl:${jacksonMapperVersion}")
     compile("org.codehaus.jackson:jackson-core-asl:${jacksonMapperVersion}")
+
    
     compile("org.projectlombok:lombok:${lombokVersion}")
     compile("com.google.guava:guava:${guavaVersion}")
