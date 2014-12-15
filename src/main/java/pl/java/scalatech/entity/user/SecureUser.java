@@ -10,7 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
@@ -35,13 +34,13 @@ import pl.java.scalatech.entity.annotation.PasswordsEqualConstraint;
 @EqualsAndHashCode(callSuper = true)
 @DiscriminatorColumn(name = "User", discriminatorType = DiscriminatorType.STRING)
 @Builder
-public class SecureUser extends BaseUser<Long> implements UserDetails {
+public class SecureUser extends BaseUser implements UserDetails {
     private static final long serialVersionUID = -6567709458397827407L;
 
     private String thumbnailUrl;
     
     @OneToOne
-    private Activation<Long> activation; 
+    private Activation activation; 
 
     @Column(name = "logged", nullable = false)
     private boolean logged;

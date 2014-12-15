@@ -1,6 +1,5 @@
 package pl.java.scalatech.entity.common;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
@@ -25,7 +24,7 @@ import org.hibernate.annotations.Type;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public abstract class EntityCommon<T extends Serializable> extends EnityToken<T> {
+public abstract class EntityCommon extends EnityToken{
 
     private static final long serialVersionUID = -7901407735478652066L;
 
@@ -50,7 +49,7 @@ public abstract class EntityCommon<T extends Serializable> extends EnityToken<T>
             dateAdded = dateModification;
         }
     }
-    @Column(name = "date_modification",nullable=false)
+    @Column(name = "disabled",nullable=false)
     protected boolean disabled = Boolean.FALSE.booleanValue();
 
 }

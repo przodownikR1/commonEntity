@@ -14,7 +14,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 @MappedSuperclass
-public class EntityCommonVersioning<T extends Serializable> extends EntityCommon<T> {
+public class EntityCommonVersioning extends EntityCommon {
     private static final long serialVersionUID = -4054868885539004220L;
 
     @Version

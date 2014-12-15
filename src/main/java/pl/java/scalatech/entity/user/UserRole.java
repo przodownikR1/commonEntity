@@ -22,7 +22,7 @@ import pl.java.scalatech.entity.common.EntityCommon;
 @RequiredArgsConstructor(staticName = "of")
 @NoArgsConstructor
 @XmlRootElement(name = "userRole")
-public class UserRole extends EntityCommon<Long> {
+public class UserRole extends EntityCommon {
 
     private static final long serialVersionUID = 4217735871414498766L;
 
