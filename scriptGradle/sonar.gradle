@@ -1,8 +1,5 @@
 def testResultsDir = "$buildDir/test-results/"
 
-
-
-
 apply plugin: "sonar-runner"
 
 sonarRunner {
@@ -11,7 +8,7 @@ sonarRunner {
        property "sonar.projectName", "${projectName}"
 
         property "sonar.junit.reportsPath", testResultsDir
-        logger.quiet("${sonarJdbcUrl}    ${sonarJdbcDriverClassName}  ${sonarJdbcUsername}  ${sonarJdbcPassword} ")
+        logger.info("${sonarJdbcUrl}    ${sonarJdbcDriverClassName}  ${sonarJdbcUsername}  ${sonarJdbcPassword} ")
         // Address of SonarQube server
         property "sonar.host.url", "${sonarURL}"
 
