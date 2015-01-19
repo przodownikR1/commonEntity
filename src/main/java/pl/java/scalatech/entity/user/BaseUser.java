@@ -23,6 +23,8 @@ import lombok.EqualsAndHashCode;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import pl.java.scalatech.entity.common.EntityCommonVersioning;
@@ -37,20 +39,20 @@ import pl.java.scalatech.entity.type.Sex;
 public abstract class BaseUser extends EntityCommonVersioning {
     private static final long serialVersionUID = 3167444754591334354L;
 
-    @NotNull
-    @Size(min = 2)
+    @NotEmpty
+    @Length(min=2,max=30)
     @Column(name = "first_name", nullable = false, length = 30)
     protected String firstName;
 
-    @NotNull
-    @Size(min = 2)
+    @NotEmpty
+    @Length(min=2,max=256)
     @Column(name = "last_name", nullable = false, length = 256)
     protected String lastName;
 
     @Embedded
     private Address address;
 
-    @NotNull
+    @NotEmpty
     @Email
     @JsonIgnore
     @XmlTransient
@@ -67,8 +69,8 @@ public abstract class BaseUser extends EntityCommonVersioning {
     @Column(name = "mail", length = 255)
     private String enc_mail;
 
-    @NotNull
-    @Size(max = 30)
+    @NotEmpty
+    @Length(min=2,max = 30)
     @Transient
     @JsonIgnore
     @XmlTransient

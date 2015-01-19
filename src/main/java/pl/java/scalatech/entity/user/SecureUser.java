@@ -22,6 +22,7 @@ import lombok.experimental.Builder;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,7 +37,7 @@ import pl.java.scalatech.entity.annotation.PasswordsEqualConstraint;
 @Builder
 public class SecureUser extends BaseUser implements UserDetails {
     private static final long serialVersionUID = -6567709458397827407L;
-
+    
     private String thumbnailUrl;
     
     @OneToOne
@@ -56,6 +57,7 @@ public class SecureUser extends BaseUser implements UserDetails {
     @Transient
     @XmlTransient
     @JsonIgnore
+    @NotEmpty
     private String password;
     
     @Column(name = "attempt_login_count", nullable = false, precision = 4)
