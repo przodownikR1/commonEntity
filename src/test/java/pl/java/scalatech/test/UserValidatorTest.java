@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import pl.java.scalatech.entity.user.Address;
@@ -20,6 +21,7 @@ public class UserValidatorTest extends BaseEntityTest<SecureUser>{
 
     }
     @Test
+    @Ignore
     public void shouldValidate(){
        log.info("{}", getConstraintViolations(secureUser));
     }
