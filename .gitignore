@@ -80,3 +80,6 @@ local.properties
 
 gc.log
 /repo/
+/basicEntity.log
+/t.txt
+/t1.txt

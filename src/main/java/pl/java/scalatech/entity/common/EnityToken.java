@@ -16,7 +16,6 @@ public abstract class EnityToken extends PKEntity{
     
     private static final long serialVersionUID = -7038220129873367795L;
 
-    /** Web token. */
     @Transient
     @JsonIgnore 
     @XmlTransient

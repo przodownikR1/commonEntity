@@ -10,6 +10,9 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,21 +28,21 @@ import pl.java.scalatech.entity.common.Location;
 @Builder
 public class Address implements Serializable {
     private static final long serialVersionUID = -5271571702826932282L;
-    @NotNull
+    @NotEmpty
     @Size(min = 2, max = 30)
     @Pattern(regexp = ".+")
     @Column(name = "country", nullable = false, length = 30)
     private String country;
 
-    @NotNull
-    @Size(min = 2, max = 50)
+    @NotEmpty
+    @Length(min=2,max=50)
     @Pattern(regexp = ".+")
     @Column(name = "city", nullable = false, length = 50)
     private String city;
 
     @Column(name = "street", length = 50)
     private String street;
-
+    @Length(max=4)
     @Column(name = "street_number", length = 4)
     private String streetNumber;
 
@@ -50,6 +53,7 @@ public class Address implements Serializable {
     private Location location;
 
     @Column(nullable = false, length = 6)
+    @NotEmpty
     @Pattern(regexp = "^\\d{2}-\\d{3}$")
     private String zipcode;
 

@@ -1,7 +1,5 @@
 package pl.java.scalatech.entity.common;
 
-import java.io.Serializable;
-
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlTransient;
