@@ -38,11 +38,6 @@ jar {
     }
 }
 
-
-
-
-
-
 project.tasks.test.configure { includes = ['**/*Test.class']}
 
 test {
