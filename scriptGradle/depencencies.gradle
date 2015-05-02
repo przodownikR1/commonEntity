@@ -19,7 +19,7 @@ dependencies {
     compile("org.codehaus.jackson:jackson-mapper-asl:${jacksonMapperVersion}")
     compile("org.codehaus.jackson:jackson-core-asl:${jacksonMapperVersion}")
     //compiler("joda-time:joda-time-hibernate:${jodaTimeHibernateVersion}")
-
+    compile ("org.springframework.data:spring-data-jpa:${springDataJPAVersion}")
     compile("org.projectlombok:lombok:${lombokVersion}")
     compile("com.google.guava:guava:${guavaVersion}")
     runtime("org.hsqldb:hsqldb:${hsqldbVersion}")
@@ -36,6 +36,22 @@ dependencies {
 
 }
 
-configurations {
-    all*.exclude group: "commons-logging", module: "commons-logging"
-}
+
+    //testCompile ("org.springframework:spring-test:${springVersion}")
+    configurations {
+        all {
+            resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+            exclude group: "commons-logging"
+            exclude module: "slf4j-log4j12"
+            exclude module: "hibernate-jpa-2.0-api"
+        }
+    }
+    
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.springframework') {
+                details.useVersion '4.1.6.RELEASE'
+            }
+        }
+    }
+    

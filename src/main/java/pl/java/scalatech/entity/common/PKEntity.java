@@ -22,7 +22,7 @@ import lombok.Data;
 public abstract class PKEntity implements Serializable {
   
     private static final long serialVersionUID = 7669211182758111346L;
-    @Id
+    @Id 
     @Min(0L)
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, precision = 38, scale = 0)
